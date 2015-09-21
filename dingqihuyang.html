@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8">
+		<title>爱车资讯-车籍简况 Tameauto.com 驯车网</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+
+		<link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="lib/font-awesome/css/zzsc.css" />
+		<script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		
+		<script type="text/javascript">
+			function countChar(textareaName, spanName) {
+				document.getElementById(spanName).innerHTML = 150 - document.getElementById(textareaName).value.length;
+				if (document.getElementById(textareaName).value.length >= 150) {
+					window.alert("已经是最大字数了哦！");
+					return false;
+				}
+			}
+		</script>
+		<style>
+			table {
+				margin: 0px;
+			}
+			#width_td tr> td input {
+				width: 80px;
+			}
+			#width_td tr td {
+				border: 1px solid #C3C3D2;
+			}
+			#page-stats3 img {
+				margin: 5px 5px;
+			}
+			.radio {
+				float: left;
+				margin: 5px 5px;
+			}
+			.radio-box td {
+				width: 120px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var stepW = 24;
+				var description = new Array("非常差，回去再练练", "真的是差，都不忍心说你了", "一般，还过得去吧", "很好，是我想要的东西", "太完美了，此物只得天上有，人间哪得几回闻!");
+				var stars = $("#star > li");
+				var descriptionTemp;
+				$("#showb").css("width", 0);
+				stars.each(function(i) {
+					$(stars[i]).click(function(e) {
+						var n = i + 1;
+						$("#showb").css({
+							"width": stepW * n
+						});
+						descriptionTemp = description[i];
+						$(this).find('a').blur();
+						return stopDefault(e);
+						return descriptionTemp;
+					});
+				});
+				stars.each(function(i) {
+					$(stars[i]).hover(
+						function() {
+							$(".description").text(description[i]);
+						},
+						function() {
+							if (descriptionTemp != null)
+								$(".description").text("当前您的评价为：" + descriptionTemp);
+							else
+								$(".description").text(" ");
+						}
+					);
+				});
+			});
+
+			function stopDefault(e) {
+				if (e && e.preventDefault)
+					e.preventDefault();
+				else
+					window.event.returnValue = false;
+				return false;
+			};
+		</script>
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	</head>
+
+	<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+	<!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+	<!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+	<!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!-->
+
+	<body class="">
+		<!--<![endif]-->
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav pull-right">
+
+					<li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">设置</a></li>
+					<li id="fat-menu" class="dropdown">
+						<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user"></i>花千骨
+							<i class="icon-caret-down"></i>
+						</a>
+
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="#">我的帐户</a></li>
+							<li class="divider"></li>
+							<li><a tabindex="-1" class="visible-phone" href="#">设置</a></li>
+							<li class="divider visible-phone"></li>
+							<li><a tabindex="-1" href="sign-in.html">退出</a></li>
+						</ul>
+					</li>
+
+				</ul>
+				<a class="brand" href="index.html"><span class="second">会员中心</span></a>
+			</div>
+		</div>
+
+		<div class="sidebar-nav">
+			<a href="#wodeziliao" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>我的资料<i class="icon-chevron-up"></i></a>
+			<ul id="wodeziliao" class="nav nav-list collapse in">
+				<li><a href="index.html">会员信息</a></li>
+				<li><a href="users.html">驾驶证</a></li>
+				<li><a href="user.html">爱车管理</a></li>
+				<li><a href="media.html">积分管理</a></li>
+			</ul>
+
+			<a href="#aichezixun" class="nav-header collapsed" data-toggle="collapse"><i class="icon-briefcase"></i>爱车资讯<i class="icon-chevron-up"></i></a>
+			<ul id="aichezixun" class="nav nav-list collapse">
+				<li><a href="sign-in.html">车籍简况</a></li>
+				<li><a href="sign-up.html">爱车列表</a></li>
+				<li><a href="reset-password.html">费用简表</a></li>
+				<li><a href="reset-password.html">行驶证</a></li>
+				<li><a href="reset-password.html">维修参数</a></li>
+			</ul>
+
+			<a href="#wodewenti" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>我的问题<i class="icon-chevron-up"></i></a>
+			<ul id="wodewenti" class="nav nav-list collapse">
+				<li><a href="403.html">我要提问</a></li>
+				<li><a href="404.html">已经回答</a></li>
+				<li><a href="500.html">尚未回答</a></li>
+				<li><a href="503.html">尚未评价</a></li>
+				<li><a href="reset-password.html">真相反馈</a></li>
+			</ul>
+
+			<a href="#wodegaojian" class="nav-header collapsed" data-toggle="collapse"><i class="icon-legal"></i>我的高见<i class="icon-chevron-up"></i></a>
+			<ul id="wodegaojian" class="nav nav-list collapse">
+				<li><a href="privacy-policy.html">我有高见</a></li>
+				<li><a href="terms-and-conditions.html">乐为人师</a></li>
+				<li><a href="500.html">热度高见</a></li>
+				<li><a href="500.html">驯车推荐</a></li>
+			</ul>
+
+			<a href="#aicherizhi" class="nav-header collapsed" data-toggle="collapse"><i class="icon-legal"></i>爱车日志<i class="icon-chevron-up"></i></a>
+			<ul id="aicherizhi" class="nav nav-list collapse">
+				<li><a href="privacy-policy.html">油费记录</a></li>
+				<li><a href="dingqiyanghu.html">定期养护</a></li>
+				<li><a href="500.html">故障维修</a></li>
+				<li><a href="500.html">事故维修</a></li>
+				<li><a href="500.html">理赔记录</a></li>
+				<li><a href="500.html">加装改装</a></li>
+				<li><a href="500.html">投保记录</a></li>
+				<li><a href="500.html">违章处罚</a></li>
+				<li><a href="500.html">车辆检验</a></li>
+				<li><a href="500.html">旅程记录</a></li>
+			</ul>
+		</div>
+
+		<div class="content">
+
+			<ul class="breadcrumb">
+				<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+				<li class="active">汽车日志/定期养护</li>
+			</ul>
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+
+					<div class="block">
+						<a href="#page-stats" class="block-heading" data-toggle="collapse">爱车牌号</a>
+						<div id="page-stats" class="block-body collapse in">
+
+							<div class="stat-widget-container">
+								<div class="stat-widget">
+									<div class="stat-button">
+										<p class="detail"><a href="#">苏FCS056</a></p>
+									</div>
+								</div>
+
+								<div class="stat-widget">
+									<div class="stat-button">
+										<p class="detail"><a href="#">皖CDF566</a></p>
+									</div>
+								</div>
+
+								<div class="stat-widget">
+									<div class="stat-button">
+										<p class="detail"><a href="#">沪HRD863</a></p>
+									</div>
+								</div>
+
+								<div class="stat-widget">
+									<div class="stat-button">
+										<p class="detail"><a href="#">更多爱车</a></p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="block">
+						<a href="#page-stats1" class="block-heading" data-toggle="collapse">前次养护</a>
+						<div id="page-stats1" class="block-body collapse in">
+							<table class="table">
+								<tr>
+									<th nowrap="nowrap">日期</th>
+									<th nowrap="nowrap">里程数</th>
+									<th nowrap="nowrap">项目内容</th>
+									<th nowrap="nowrap">费用</th>
+									<th nowrap="nowrap" 服务商</th>
+										<th nowrap="nowrap">评价</th>
+										<th nowrap="nowrap">操作</th>
+								</tr>
+
+								<tr>
+									<td>2015/09/08</td>
+									<td>48000</td>
+									<td>电瓶、轮胎、雨刷、机油、机滤、空滤</td>
+									<td>3650</td>
+									<td>昆山娃能修理厂</td>
+									<td>未评价
+										<br /><a href="#">评价</a>
+									</td>
+									<td>详情>>
+										<br /><a href="#">新增记录</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="block">
+						<a href="#page-stats2" class="block-heading" data-toggle="collapse">养护记录</a>
+						<div id="page-stats2" class="block-body collapse in">
+							<form id="form" class="form" method="post" action="">
+								<table class="table" id="table_bottom1">
+									<tr>
+										<th><span class="red">*</span>当前日期:</th>
+										<th><span class="red">*</span>当前里程:</th>
+										<th colspan="2"> </th>
+									</tr>
+									<tr>
+										<td>
+											<input type="date" />
+										</td>
+										<td>
+											<div class="input-group">
+												<input type="text" class="form-control" id="exampleInputAmount" placeholder="里程">
+												<span class="input-group-addon">Km</span>
+											</div>
+										</td>
+
+										<td colspan="2">
+											<input type="submit" name="button1" id="button1" value="提交" />
+										</td>
+									</tr>
+								</table>
+							</form>
+							<table class="table" id="width_td" frame="below">
+								<tr>
+									<th nowrap="nowrap">项目</th>
+									<th colspan="4" nowrap="nowrap">内容</th>
+									<th nowrap="nowrap">工时费</th>
+									<th nowrap="nowrap">小计</th>
+								</tr>
+
+								<tr>
+									<td><font color="#363D4A" size="3"><big>基本保养:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">空调滤芯</th>
+												<th nowrap="nowrap">机油滤芯</th>
+												<th nowrap="nowrap">空气滤芯</th>
+												<th nowrap="nowrap">汽油滤芯</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">油水分离器</th>
+												<th nowrap="nowrap">专用尿素液</th>
+												<th nowrap="nowrap">补胎/动平衡</th>
+												<th nowrap="nowrap">更换电瓶</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">洗车</th>
+												<th nowrap="nowrap">打蜡/抛光</th>
+												<th nowrap="nowrap">机油</th>
+												<th nowrap="nowrap">防冻液</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>行走系统:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">前轮刹车片</th>
+												<th nowrap="nowrap">后轮刹车片</th>
+												<th nowrap="nowrap">前轮刹车盘</th>
+												<th nowrap="nowrap">后轮刹车盘</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">刹车油</th>
+												<th nowrap="nowrap">离合器油</th>
+												<th nowrap="nowrap">离合器拉线</th>
+												<th nowrap="nowrap">变速箱</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">换胎</th>
+												<th nowrap="nowrap">车轮定位</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td colspan="3">
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>灯光安全:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">大灯总成</th>
+												<th nowrap="nowrap">尾灯总成</th>
+												<th nowrap="nowrap">大灯灯泡</th>
+												<th nowrap="nowrap">雾灯</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">转向灯</th>
+												<th nowrap="nowrap">刹车灯</th>
+												<th nowrap="nowrap">倒车灯</th>
+												<th nowrap="nowrap">示廓灯</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">雨刷片</th>
+
+											</tr>
+											<tr>
+												<td colspan="4">
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>引擎清洗:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">节气门清洗</th>
+												<th nowrap="nowrap">喷油嘴清洗</th>
+												<th nowrap="nowrap">进气歧管清洗</th>
+												<th nowrap="nowrap">曲轴箱清洗</th>
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>引擎点火:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">火花塞</th>
+												<th nowrap="nowrap">点火高压线</th>
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td colspan="3">
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>引擎皮带:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">正时皮带</th>
+												<th nowrap="nowrap">正时张紧轮</th>
+												<th nowrap="nowrap">正时惰轮</th>
+												<th nowrap="nowrap">组合皮带</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">水泵皮带</th>
+												<th nowrap="nowrap">发电机皮带</th>
+												<th nowrap="nowrap">助力泵皮带</th>
+												<th nowrap="nowrap">空调泵皮带</th>
+
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<th nowrap="nowrap">其他张紧轮</th>
+
+											</tr>
+											<tr>
+												<td colspan="4">
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+
+											</tr>
+										</table>
+									</td>
+
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>其他易损件:</big></font></td>
+									<td colspan="4">
+										<table class="table" frame="below">
+											<tr>
+
+												<th nowrap="nowrap">零件名称</th>
+												<th nowrap="nowrap">零件名称</th>
+											</tr>
+											<tr>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="名称">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+												<td>
+
+													<div class="input-group">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="名称">
+														<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+														<span class="input-group-addon">￥</span>
+													</div>
+												</td>
+
+											</tr>
+										</table>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+
+								</tr>
+
+								<tr>
+									<td colspan="7" style="text-align: right;">
+										<div class="input-group">
+											<font color="#363D4A" size="3"><big>本次保养费用合计:</big></font>
+											<input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+											<span class="input-group-addon">￥</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><font color="#363D4A" size="3"><big>补充纪要:</big></font></td>
+									<td colspan="6">
+										<textarea id="status" name="status" style="resize: none;width: 420px;height: 100px;" onkeydown='countChar("status","counter");' onkeyup="countChar('status','counter');">
+										</textarea>
+										<br>
+											<div>可以输入<span id="counter">150</span>/150字</div>
+									</td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="block">
+						<a href="#page-stats3" class="block-heading" data-toggle="collapse">作业图片</a>
+						<div id="page-stats3" class="block-body collapse in">
+							<img src="images/aicherizhi/作业图片.png" alt="..." class="img-thumbnail">
+							<img src="images/aicherizhi/作业图片.png" alt="..." class="img-thumbnail">
+							<img src="images/aicherizhi/作业图片.png" alt="..." class="img-thumbnail">
+							<img src="images/aicherizhi/作业图片.png" alt="..." class="img-thumbnail">
+							<img src="images/aicherizhi/作业图片.png" alt="..." class="img-thumbnail">
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="block">
+						<a href="#page-stats4" class="block-heading" data-toggle="collapse">服务厂商</a>
+						<div id="page-stats4" class="block-body collapse in">
+							<form id="form1" class="form1" method="post" action="">
+								<table class="table">
+									<tr>
+										<th nowrap="nowrap" colspan="4">
+											<span class="red">*</span>名称:
+										</th>
+
+									</tr>
+									<tr>
+										<td colspan="4">
+											<input type="text" />
+										</td>
+									</tr>
+									<tr>
+										<th colspan="4" nowrap="nowrap">
+
+											<span class="red">*</span>电话:
+
+										</th>
+
+									</tr>
+									<tr>
+										<td colspan="4">
+											<input type="text" class="form-control" id="exampleInputAmount" placeholder="TEL">
+										</td>
+									</tr>
+									<tr>
+										<th colspan="4" nowrap="nowrap">
+
+											<span class="red">*</span>地址:
+
+										</th>
+
+									</tr>
+									<tr>
+
+										<td>
+											<select name="sheng" id="sheng" onchange="displayShi()">
+												<option value="">----省（区/市）----</option>
+												<option value=北京>北京</option>
+												<option value=上海>上海</option>
+												<option value=天津>天津</option>
+												<option value=重庆>重庆</option>
+												<option value=河北>河北省</option>
+												<option value=山西>山西省</option>
+												<option value=辽宁>辽宁省</option>
+												<option value=吉林>吉林省</option>
+												<option value=黑龙江>黑龙江省</option>
+												<option value=江苏>江苏省</option>
+												<option value=浙江>浙江省</option>
+												<option value=安徽>安徽省</option>
+												<option value=福建>福建省</option>
+												<option value=江西>江西省</option>
+												<option value=山东>山东省</option>
+												<option value=河南>河南省</option>
+												<option value=湖北>湖北省</option>
+												<option value=湖南>湖南省</option>
+												<option value=广东>广东省</option>
+												<option value=海南>海南省</option>
+												<option value=四川>四川省</option>
+												<option value=贵州>贵州省</option>
+												<option value=云南>云南省</option>
+												<option value=陕西>陕西省</option>
+												<option value=甘肃>甘肃省</option>
+												<option value=青海>青海省</option>
+												<option value=内蒙古自治区>内蒙古自治区</option>
+												<option value=广西壮族自治区>广西壮族自治区</option>
+												<option value=西藏自治区>西藏自治区</option>
+												<option value=宁夏回族自治区>宁夏回族自治区</option>
+												<option value=新疆维吾尔自治区>新疆维吾尔自治区</option>
+											</select>
+										</td>
+										<td>
+											<select name="shi" id="shi" onchange="displayXian()">
+												<option value="">----市（地区）----</option>
+											</select>
+										</td>
+										<td>
+											<select name="xian" id="xian" onchange="displayzhen()">
+												<option value="">----县（市）----</option>
+											</select>
+										</td>
+										<td>
+											<select name="zhen" id="zhen" onchange="set_text()">
+												<option value="">----镇（乡）----</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" class="form-control" id="exampleInputAmount" placeholder="路">
+										</td>
+										<td>
+											<input type="text" class="form-control" id="exampleInputAmount" placeholder="号">
+										</td>
+									</tr>
+									<tr>
+										<th nowrap="nowrap">
+
+											<span class="red">*</span>厂商类型:
+
+										</th>
+
+									</tr>
+									<tr>
+										<td colspan="4">
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">装潢店
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">快修店
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">改装厂
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">二类汽修
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">一类汽修
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios1" id="optionsRadios6">4S店
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th colspan="4" nowrap="nowrap">
+
+											<span class="red">*</span>发票清单:
+
+										</th>
+
+									</tr>
+									<tr>
+										<td colspan="4">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+											<img src="images/aicherizhi/发票.jpg" style="width: 250px;height: 200px;" alt="发票" class="img-thumbnail">
+										</td>
+									</tr>
+									<tr>
+
+										<th colspan="6" nowrap="nowrap">
+
+											<span class="red">*</span>服务承诺:
+
+										</th>
+
+									</tr>
+									<tr>
+										<td colspan="6">
+											<table class="table" id="table_bottom2">
+												<tr class="radio-box">
+													<td>
+
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保一个月
+
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保两个月
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保三个月
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保四个月
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保六个月
+													</td>
+												</tr>
+												<tr class="radio-box">
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保一万公里
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保两万公里
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保三万公里
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保四万公里
+													</td>
+													<td>
+														<input type="radio" name="optionsRadios1" id="optionsRadios6">质保六万公里
+
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<th colspan="6" nowrap="nowrap">
+
+											<span class="red">*</span>服务评价:
+
+										</th>
+
+									</tr>
+									<tr>
+										<td><font color="#363D4A" size="3"><big>当期评价:</big></font></td>
+										<td colspan="5">
+											<table class="table">
+
+												<tr>
+													<td>维修操作:
+														<div id="xzw_starSys">
+															<div id="xzw_starBox">
+																<ul class="star" id="star">
+																	<li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+																	<li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+																	<li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+																	<li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+																	<li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+																</ul>
+																<div class="current-rating" id="showb"></div>
+															</div>
+															<!--评价文字-->
+															<div class="description"></div>
+														</div>
+
+													</td>
+												</tr>
+												<tr>
+													<td>过程态度:
+														<div id="xzw_starSys">
+															<div id="xzw_starBox">
+																<ul class="star" id="star">
+																	<li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+																	<li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+																	<li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+																	<li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+																	<li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+																</ul>
+																<div class="current-rating" id="showb"></div>
+															</div>
+															<!--评价文字-->
+															<div class="description"></div>
+														</div>
+
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td><font color="#363D4A" size="3"><big>后期评价:</big></font></td>
+										<td colspan="5">
+											<table class="table">
+
+												<tr>
+													<td>服务质量:
+														<div id="xzw_starSys">
+															<div id="xzw_starBox">
+																<ul class="star" id="star">
+																	<li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+																	<li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+																	<li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+																	<li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+																	<li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+																</ul>
+																<div class="current-rating" id="showb"></div>
+															</div>
+															<!--评价文字-->
+															<div class="description"></div>
+														</div>
+
+													</td>
+												</tr>
+												<tr>
+													<td>售后支持:
+														<div id="xzw_starSys">
+															<div id="xzw_starBox">
+																<ul class="star" id="star">
+																	<li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+																	<li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+																	<li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+																	<li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+																	<li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+																</ul>
+																<div class="current-rating" id="showb"></div>
+															</div>
+															<!--评价文字-->
+															<div class="description"></div>
+														</div>
+
+													</td>
+												</tr>
+												<tr>
+													<td>服务收费:
+														<div id="xzw_starSys">
+															<div id="xzw_starBox">
+																<ul class="star" id="star">
+																	<li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+																	<li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+																	<li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+																	<li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+																	<li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+																</ul>
+																<div class="current-rating" id="showb"></div>
+															</div>
+															<!--评价文字-->
+															<div class="description"></div>
+														</div>
+
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+
+								</table>
+								</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="text-align: center;">
+										<input type="submit" name="button" id="button" value="提交预览" />
+									</td>
+								</tr>
+
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<footer>
+					<hr>
+					<p class="pull-right"><a href="#" title="" target="_blank">苏ICP备13017892号</a></p>
+					<p>&copy; 2015-2016 <a href="#" target="_blank">Tameauto.com&nbsp;驯车网</a>&nbsp;版权所有</p>
+				</footer>
+
+				<!--</div>-->
+			</div>
+		</div>
+
+		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$("[rel=tooltip]").tooltip();
+			$(function() {
+				$(".demo-cancel-click").click(function() {
+					return false;
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
